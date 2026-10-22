@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <!-- Invite links (https://bunchly.app/join/…, /helper/…, /group/…) land here when Bunchly isn't installed.
+  <!-- Invite links (https://bunchly.app/join/…, /helper/…, /group/…, /link/…) land here when Bunchly isn't installed.
        The key after # never reaches this server; this page only uses it to build the "Open in Bunchly" link,
        and loads nothing from anywhere else. -->
   <main>
@@ -33,6 +33,7 @@
       join: ['Join the family on Bunchly', 'You’ve been invited to share a family’s Bunchly: their reminders, notes, meals and calendars.', 1],
       helper: ['Help out with Bunchly', 'A family invited you to see the kids’ routine, allergies, emergency contacts and the notes they share with you.', 2],
       group: ['Join the group on Bunchly', 'You’ve been invited to a group on Bunchly: the plans, lists, rooms and places to eat.', 2],
+      link: ['Chat with another bunch on Bunchly', 'Another bunch wants to chat with one of yours. Only what’s said in the chat is shared.', 2],
     };
     const parts = location.pathname.split('/').filter(Boolean);
     const kind = kinds[parts[0]];
