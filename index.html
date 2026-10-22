@@ -3,23 +3,211 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bunchly</title>
-  <meta name="description" content="Bunchly keeps your family, and every group you plan with, on one calm Today screen.">
+  <title>Bunchly: your family's day in one place</title>
+  <meta name="description" content="Bunchly keeps your family, and every group you plan with, on one calm Today screen: calendars, pickups, reminders, meals and trips. No accounts needed.">
+  <meta name="theme-color" content="#FFF7EC" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#11141F" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Bunchly">
+  <meta property="og:description" content="Your family's day in one place. Calendars, pickups, reminders, meals and trips, shared with the people who help.">
+  <meta property="og:url" content="https://bunchly.app/">
+  <meta property="og:type" content="website">
   <link rel="icon" href="/logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/home.css">
 </head>
 <body>
+  <div class="glows" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+  <header class="top">
+    <a class="brand" href="/" aria-label="Bunchly home"><img src="/logo.svg" alt="" width="36" height="36"><span>Bunchly</span></a>
+    <nav aria-label="Main">
+      <a href="#features">Features</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#organizers">Organizers</a>
+    </nav>
+    <a class="button small beta-link" href="mailto:hello@bunchly.app?subject=Bunchly%20beta">Get the beta</a>
+  </header>
+
   <main>
-    <section class="card">
-      <img class="logo" src="/logo.svg" alt="">
-      <h1>Bunchly</h1>
-      <p>Your family's day in one place: calendars, reminders, routines, meals and notes, shared with the people who help.</p>
-      <p class="muted">Coming to iPhone first, then Android.</p>
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">For busy families, and every bunch you plan with</p>
+        <h1>Your family's day in one place.</h1>
+        <p class="lead">Calendars, pickups, reminders, meals and trips on one calm Today screen. The biggest thing is always what matters now, so you can run the day with one thumb.</p>
+        <div class="cta">
+          <a class="button beta-link" href="mailto:hello@bunchly.app?subject=Bunchly%20beta">Join the free beta</a>
+          <a class="button ghost" href="#features">See how it works</a>
+        </div>
+        <p class="fine">iPhone first, Android on the way. No accounts needed.</p>
+      </div>
+
+      <figure class="phone" aria-label="Bunchly's Today screen">
+        <div class="screen">
+          <p class="caption">Thursday, Oct 23 · 4 things today</p>
+          <p class="greeting">Good morning, Sam</p>
+
+          <div class="tile next">
+            <p class="caption">Next up · Swim class</p>
+            <p class="countdown">Leave in 12 min</p>
+            <p class="small-text"><span class="chip c-coral">Mia</span> with <span class="chip c-blue">Sam</span> driving</p>
+            <span class="go">Go</span>
+          </div>
+
+          <div class="tile ask">
+            <p class="tile-title">Who's picking up Leo?</p>
+            <div class="answers"><span>Me</span><span>Alex</span><span>Ask Grandma</span></div>
+          </div>
+
+          <div class="row">
+            <div class="tile mini">
+              <p class="caption">Weather</p>
+              <p class="tile-title">Rain at 3</p>
+              <p class="small-text">Pack Leo's raincoat.</p>
+            </div>
+            <div class="tile mini">
+              <p class="caption">At Costco</p>
+              <p class="tile-title">Toilet paper</p>
+              <p class="small-text">+ 2 more</p>
+            </div>
+          </div>
+
+          <div class="tile list">
+            <p class="caption">Later today</p>
+            <p><span class="dot c-mint"></span>5:30 Soccer · Leo</p>
+            <p><span class="dot c-lavender"></span>6:15 Tacos, 20 min</p>
+          </div>
+        </div>
+      </figure>
     </section>
-    <footer>
-      <p>Run a daycare, school or club? <a href="/organizer/">Post updates for families</a>.</p>
-      <p><a href="/support/">Help</a> · <a href="/privacy/">Privacy</a></p>
-    </footer>
+
+    <ul class="promises" aria-label="Bunchly promises">
+      <li><strong>No accounts.</strong> Open it and go. Grandma joins in two taps.</li>
+      <li><strong>Locked on your phone.</strong> Family data is encrypted before it syncs.</li>
+      <li><strong>No ads, ever.</strong> We don't sell or share your family's data.</li>
+    </ul>
+
+    <section id="features" class="section">
+      <h2>Everything the day needs, nothing it doesn't</h2>
+      <p class="section-lead">Bunchly works the moment you open it. Connect your calendars if you like; every card can be hidden.</p>
+      <div class="grid">
+        <article class="feature">
+          <div class="icon c-blue" aria-hidden="true">⏱</div>
+          <h3>Leave on time</h3>
+          <p>"Leave in 12 min" counts down on your Lock Screen, with live travel time and extra minutes for getting little ones out the door.</p>
+        </article>
+        <article class="feature">
+          <div class="icon c-coral" aria-hidden="true">🚗</div>
+          <h3>Who's on pickup?</h3>
+          <p>Bunchly asks, you tap. It spots gaps and double bookings across both parents' calendars before they become a scramble.</p>
+        </article>
+        <article class="feature">
+          <div class="icon c-mint" aria-hidden="true">🛒</div>
+          <h3>Reminders at the store</h3>
+          <p>Need toilet paper? It pops up when you walk into Costco or the grocery store, not at 9 PM when you remember.</p>
+        </article>
+        <article class="feature">
+          <div class="icon c-sun" aria-hidden="true">🌮</div>
+          <h3>Dinner, decided</h3>
+          <p>Meal ideas that skip allergies and foods the kids won't eat, a week's plan, and a grocery list sorted by aisle.</p>
+        </article>
+        <article class="feature">
+          <div class="icon c-lavender" aria-hidden="true">🧳</div>
+          <h3>Trips and groups</h3>
+          <p>Plan a trip, a cruise with friends or a birthday party: itinerary, packing lists with owners, who's where, and places to eat.</p>
+        </article>
+        <article class="feature">
+          <div class="icon c-pink" aria-hidden="true">☀️</div>
+          <h3>A morning brief</h3>
+          <p>Your day in a few plain sentences, written on your phone: who's where, what to pack, and rain at pickup.</p>
+        </article>
+      </div>
+      <p class="also">Also: school and daycare calendar feeds, shared notes and checklists, water reminders, home and Lock Screen widgets, and Siri ("What's on today?").</p>
+    </section>
+
+    <section class="section split">
+      <div>
+        <h2>Bring in the helpers</h2>
+        <p>Invite a co-parent, a babysitter or a grandparent by text, email, AirDrop or QR code. Each invite works once, for 48 hours.</p>
+        <p>Helpers see only what they need:</p>
+        <ul class="checks">
+          <li>names and allergies</li>
+          <li>the routine and emergency contacts</li>
+          <li>planned meals</li>
+          <li>notes you mark for caregivers</li>
+          <li>reminders meant for them</li>
+        </ul>
+      </div>
+      <div class="bunch-card" aria-hidden="true">
+        <p class="tile-title">The whole bunch, on the same page.</p>
+        <div class="people">
+          <span class="avatar c-blue">S</span><span class="avatar c-coral">M</span><span class="avatar c-mint">L</span>
+          <span class="avatar c-lavender">A</span><span class="avatar c-pink">G</span><span class="avatar c-sun">+</span>
+        </div>
+        <p class="small-text">Sam · Mia · Leo · Alex · Grandma · Invite</p>
+      </div>
+    </section>
+
+    <section id="privacy" class="section privacy">
+      <h2>Private by design</h2>
+      <div class="grid three">
+        <div>
+          <h3>Locked before it leaves</h3>
+          <p>Your family's notes, reminders and plans are encrypted on your phone. Our server only stores locked boxes it can't open.</p>
+        </div>
+        <div>
+          <h3>AI that stays home</h3>
+          <p>The morning brief and suggestions use Apple Intelligence on your iPhone. Nothing is sent to a cloud AI.</p>
+        </div>
+        <div>
+          <h3>Location stays put</h3>
+          <p>Store reminders check where you are on your phone. Your location never reaches us.</p>
+        </div>
+      </div>
+      <p><a href="/privacy/">Read the privacy policy</a></p>
+    </section>
+
+    <section id="organizers" class="section organizers">
+      <div>
+        <h2>Run a daycare, school or club?</h2>
+        <p>Post events, closures and "bring this" notes from any computer. Families follow you with a code or QR, and your updates land right in their day, with reminders and leave-by times.</p>
+      </div>
+      <a class="button" href="/organizer/">Post updates for families</a>
+    </section>
+
+    <section class="section faq">
+      <h2>Questions</h2>
+      <details>
+        <summary>What does it cost?</summary>
+        <p>The beta is free. When Bunchly reaches the App Store, the core app stays free, with an optional Plus plan later.</p>
+      </details>
+      <details>
+        <summary>Do I need an account?</summary>
+        <p>No. There's no sign-up and no password. Sharing with your family works through one-time invite links.</p>
+      </details>
+      <details>
+        <summary>Is there an Android version?</summary>
+        <p>Not yet. Bunchly is built so Android phones can join the same family later.</p>
+      </details>
+      <details>
+        <summary>Is it only for families?</summary>
+        <p>Families come first, but any bunch works: a trip with friends, a team, a party you're planning.</p>
+      </details>
+      <details>
+        <summary>How do I get help?</summary>
+        <p>Visit <a href="/support/">support</a> or write to <a href="mailto:hello@bunchly.app">hello@bunchly.app</a>.</p>
+      </details>
+    </section>
+
+    <section class="section final">
+      <img src="/logo.svg" alt="" width="72" height="72">
+      <h2>Every grape counts.</h2>
+      <p>Try Bunchly with your family and tell us what would make your day easier.</p>
+      <a class="button beta-link" href="mailto:hello@bunchly.app?subject=Bunchly%20beta">Join the free beta</a>
+    </section>
   </main>
+
+  <footer class="bottom">
+    <p><a href="/support/">Help</a> · <a href="/privacy/">Privacy</a> · <a href="/organizer/">For organizers</a> · <a href="mailto:hello@bunchly.app">hello@bunchly.app</a></p>
+    <p>© 2026 Bunchly</p>
+  </footer>
 </body>
 </html>
