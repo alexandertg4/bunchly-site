@@ -7,6 +7,7 @@
           { "/": "/join/*", "comment": "Family invites" },
           { "/": "/helper/*", "comment": "Babysitter and grandparent invites" },
           { "/": "/group/*", "comment": "Bunch invites (trips, friends, events)" },
+          { "/": "/link/*", "comment": "Invites to a chat between two bunches" },
           { "/": "/organizer/follow.html", "comment": "Daycare and school follow codes" }
         ]
       }
