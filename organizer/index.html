@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bunchly for Organizers</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="top">
+    <span class="mark" aria-hidden="true">●</span>
+    <strong>Bunchly</strong> <span class="muted">for daycares, schools and activities</span>
+    <button id="sign-out" class="link" hidden>Sign out</button>
+  </header>
+
+  <main>
+    <p id="banner" class="banner" role="status" hidden></p>
+
+    <!-- Signed out -->
+    <section id="signed-out" class="card" hidden>
+      <h1>Post once. Every family sees it.</h1>
+      <p>Closures, events and "bring this" notes go straight onto each family's calendar and reminders in Bunchly.
+        Families don't need to sign up for anything here, and you never see who follows you.</p>
+      <form id="sign-in-form">
+        <label for="email">Your work email</label>
+        <input id="email" type="email" autocomplete="email" required placeholder="director@oaktree.example">
+        <button type="submit" class="primary">Email me a sign-in link</button>
+      </form>
+    </section>
+
+    <!-- Signed in, no organizer yet -->
+    <section id="create" class="card" hidden>
+      <h1>Set up your page</h1>
+      <form id="create-form">
+        <label for="org-name">Name families know you by</label>
+        <input id="org-name" required minlength="2" maxlength="80" placeholder="Oak Tree Daycare">
+        <label for="org-kind">What are you?</label>
+        <select id="org-kind">
+          <option value="daycare">Daycare</option>
+          <option value="school">School</option>
+          <option value="activity">Activity, team or class</option>
+          <option value="other">Something else</option>
+        </select>
+        <label for="org-city">City</label>
+        <input id="org-city" maxlength="80" placeholder="Austin">
+        <label for="org-website">Website</label>
+        <input id="org-website" maxlength="200" placeholder="oaktree.example">
+        <label for="org-phone">Front desk phone</label>
+        <input id="org-phone" type="tel" maxlength="40" placeholder="(512) 555-0100">
+        <p class="hint">Bunchly checks new pages by calling the number on your website, so families know you're real.</p>
+        <button type="submit" class="primary">Create my page</button>
+      </form>
+    </section>
+
+    <!-- Signed in with an organizer -->
+    <div id="dashboard" hidden>
+      <section class="card">
+        <h1 id="org-title"></h1>
+        <p id="org-status" class="status"></p>
+        <div class="share">
+          <div id="qr" class="qr" role="img" aria-label="QR code for families to follow"></div>
+          <div>
+            <p class="muted">Families follow you with this code</p>
+            <p id="code" class="code"></p>
+            <p><a id="follow-link" href="#">Follow link</a> · <button id="copy-link" class="link">Copy link</button></p>
+            <p class="hint">Print the QR code for the front door, or paste the link in your newsletter.</p>
+            <button id="rotate" class="link danger">Make a new code</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Post something</h2>
+        <form id="post-form">
+          <fieldset class="kinds">
+            <legend>What is it?</legend>
+            <label><input type="radio" name="kind" value="event" checked> Event</label>
+            <label><input type="radio" name="kind" value="closure"> We're closed</label>
+            <label><input type="radio" name="kind" value="bring"> Bring this</label>
+          </fieldset>
+          <label for="post-title">Title</label>
+          <input id="post-title" required maxlength="120" placeholder="Pajama day">
+          <div class="row">
+            <div>
+              <label for="post-date">Date</label>
+              <input id="post-date" type="date" required>
+            </div>
+            <div>
+              <label for="post-end-date">Last day (if more than one)</label>
+              <input id="post-end-date" type="date">
+            </div>
+          </div>
+          <label class="check"><input id="post-all-day" type="checkbox" checked> All day</label>
+          <div id="times" class="row" hidden>
+            <div>
+              <label for="post-start">Starts</label>
+              <input id="post-start" type="time" value="09:00">
+            </div>
+            <div>
+              <label for="post-end">Ends</label>
+              <input id="post-end" type="time" value="10:00">
+            </div>
+          </div>
+          <div id="location-field">
+            <label for="post-location">Where (families get a "leave by" time)</label>
+            <input id="post-location" maxlength="200" placeholder="1200 Elm St, Austin">
+          </div>
+          <label for="post-details">Details</label>
+          <textarea id="post-details" maxlength="2000" rows="3" placeholder="Anything families should know"></textarea>
+          <p class="hint">Never put a child's name or health details here. Posts go to every family that follows you.</p>
+          <button type="submit" class="primary">Post it</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Coming up</h2>
+        <ul id="posts" class="posts"></ul>
+        <p id="no-posts" class="muted" hidden>Nothing posted yet.</p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

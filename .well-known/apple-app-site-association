@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["2WD3727K9S.com.alexandertg4.bunchly"],
+        "components": [
+          { "/": "/join/*", "comment": "Family invites" },
+          { "/": "/helper/*", "comment": "Babysitter and grandparent invites" },
+          { "/": "/group/*", "comment": "Bunch invites (trips, friends, events)" },
+          { "/": "/organizer/follow.html", "comment": "Daycare and school follow codes" }
+        ]
+      }
+    ]
+  }
+}

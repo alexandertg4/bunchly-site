@@ -1,0 +1,96 @@
+/* Bunchly brand (docs/BRAND.md): cream, dusty blue actions, rounded type. */
+:root {
+  --bg: #FFF8EE;
+  --card: #FFFFFF;
+  --text: #14212E;
+  --muted: #4A5B6B;
+  --accent: #3E6DA6;
+  --on-accent: #FFFFFF;
+  --warning: #B4530F;
+  --success: #25633F;
+  --line: #E6DED2;
+  --event: #DCE7F5;
+  --closure: #FBE3D2;
+  --bring: #DDF3EA;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101820;
+    --card: #1A2530;
+    --text: #F2F5F8;
+    --muted: #B4C0CC;
+    --accent: #8FB0D8;
+    --on-accent: #101820;
+    --warning: #F2A066;
+    --success: #7FD1A0;
+    --line: #2C3A47;
+    --event: #26384D;
+    --closure: #4A3020;
+    --bring: #1F4035;
+  }
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.45 ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+main { max-width: 760px; margin: 0 auto; padding: 16px; }
+main.narrow { max-width: 460px; padding-top: 48px; }
+h1 { font-size: 1.6rem; margin: 0 0 8px; }
+h2 { font-size: 1.2rem; margin: 0 0 12px; }
+
+.top { display: flex; gap: 8px; align-items: baseline; padding: 14px 16px; max-width: 760px; margin: 0 auto; flex-wrap: wrap; }
+.top #sign-out { margin-left: auto; }
+.mark { color: var(--accent); }
+.mark.big { font-size: 2.5rem; margin: 0; }
+.muted { color: var(--muted); }
+.hint { color: var(--muted); font-size: 0.9rem; }
+
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 20px; margin-bottom: 14px; }
+.center { text-align: center; }
+
+label { display: block; font-weight: 600; margin: 12px 0 4px; }
+label.check { display: flex; gap: 8px; align-items: center; font-weight: 500; }
+input, select, textarea {
+  width: 100%; font: inherit; color: inherit; background: var(--bg);
+  border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; min-height: 44px;
+}
+input[type="checkbox"], input[type="radio"] { width: auto; min-height: 0; accent-color: var(--accent); }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 480px) { .row { grid-template-columns: 1fr; } }
+
+fieldset.kinds { border: 0; padding: 0; margin: 0; display: flex; gap: 8px; flex-wrap: wrap; }
+fieldset.kinds legend { font-weight: 600; margin-bottom: 6px; }
+fieldset.kinds label { display: flex; gap: 6px; align-items: center; margin: 0; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; font-weight: 500; }
+fieldset.kinds label:has(input:checked) { border-color: var(--accent); outline: 2px solid var(--accent); }
+
+a { color: var(--accent); }
+button, .button { font: inherit; cursor: pointer; }
+.primary {
+  display: inline-block; margin-top: 16px; background: var(--accent); color: var(--on-accent); border: 0;
+  border-radius: 999px; padding: 14px 24px; font-weight: 700; text-decoration: none; min-height: 48px;
+}
+.link { background: none; border: 0; color: var(--accent); padding: 0; font-weight: 600; }
+.danger { color: var(--warning); }
+
+.banner { padding: 12px 16px; border-radius: 16px; background: var(--bring); margin: 0 0 14px; }
+.banner.error { background: var(--closure); }
+.status { color: var(--warning); font-weight: 600; }
+.status.ok { color: var(--success); }
+
+.share { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.qr { width: 180px; height: 180px; background: #FFFFFF; border-radius: 16px; padding: 6px; flex: none; }
+.qr svg { width: 100%; height: 100%; }
+.code { font: 700 2rem/1.2 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: 0.08em; margin: 4px 0 8px; }
+
+.posts { list-style: none; padding: 0; margin: 0; }
+.posts li { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); }
+.posts li:first-child { border-top: 0; }
+.kind { display: inline-block; font-size: 0.8rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; }
+.kind.event { background: var(--event); }
+.kind.closure { background: var(--closure); }
+.kind.bring { background: var(--bring); }

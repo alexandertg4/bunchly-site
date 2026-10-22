@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Follow in Bunchly</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="narrow">
+    <section class="card center">
+      <p class="mark big" aria-hidden="true">●</p>
+      <h1>Follow in Bunchly</h1>
+      <p>Their events go on your family calendar, and "bring this" notes become reminders.</p>
+      <p class="muted">Your code</p>
+      <p id="code" class="code">—</p>
+      <a id="open" class="primary button" href="#">Open in Bunchly</a>
+      <p class="hint">Bunchly not opening? In the app, go to Settings, then Daycare &amp; school updates, and type the code.</p>
+    </section>
+  </main>
+  <script>
+    const alphabet = /^[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{8}$/;
+    const raw = new URLSearchParams(location.search).get('code') || '';
+    const code = raw.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (alphabet.test(code)) {
+      document.getElementById('code').textContent = `${code.slice(0, 4)}-${code.slice(4)}`;
+      document.getElementById('open').href = `bunchly://follow?code=${code}`;
+    } else {
+      document.getElementById('code').textContent = 'This link is missing its code.';
+      document.getElementById('open').hidden = true;
+    }
+  </script>
+</body>
+</html>

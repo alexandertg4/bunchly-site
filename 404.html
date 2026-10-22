@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Bunchly invite</title>
+  <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- Invite links (https://bunchly.app/join/…, /helper/…, /group/…) land here when Bunchly isn't installed.
+       The key after # never reaches this server; this page only uses it to build the "Open in Bunchly" link,
+       and loads nothing from anywhere else. -->
+  <main>
+    <section class="card">
+      <img class="logo" src="/logo.svg" alt="">
+      <h1 id="title">Page not found</h1>
+      <p id="lead">This page isn't here. <a href="/">Go to Bunchly</a>.</p>
+      <div id="invite" hidden>
+        <a id="open" class="button" href="#">Open in Bunchly</a>
+        <p class="muted">Don't have Bunchly yet?</p>
+        <ol class="steps">
+          <li>Get Bunchly on your iPhone. It's coming to the App Store soon; until then, ask whoever invited you to add you to the test version.</li>
+          <li>Come back to this message and tap the link again, or tap "Open in Bunchly" above.</li>
+        </ol>
+        <p class="muted" id="expiry">Each invite works once, for 48 hours.</p>
+      </div>
+    </section>
+  </main>
+  <script>
+    const kinds = {
+      join: ['Join the family on Bunchly', 'You’ve been invited to share a family’s Bunchly: their reminders, notes, meals and calendars.', 1],
+      helper: ['Help out with Bunchly', 'A family invited you to see the kids’ routine, allergies, emergency contacts and the notes they share with you.', 2],
+      group: ['Join the group on Bunchly', 'You’ve been invited to a group on Bunchly: the plans, lists, rooms and places to eat.', 2],
+    };
+    const parts = location.pathname.split('/').filter(Boolean);
+    const kind = kinds[parts[0]];
+    const key = location.hash.slice(1);
+    if (kind && parts.length === kind[2] + 1 && /^[A-Za-z0-9_-]{40,}$/.test(key)) {
+      document.title = kind[0];
+      document.getElementById('title').textContent = kind[0];
+      document.getElementById('lead').textContent = kind[1];
+      document.getElementById('open').href = `bunchly://${parts.map(encodeURIComponent).join('/')}#${key}`;
+      document.getElementById('invite').hidden = false;
+    } else if (kind) {
+      document.getElementById('title').textContent = 'This invite link is incomplete';
+      document.getElementById('lead').textContent = 'Part of the link may have been cut off. Ask for a new invite, and open it straight from the message.';
+    }
+  </script>
+</body>
+</html>

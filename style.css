@@ -1,0 +1,47 @@
+/* Bunchly brand (docs/BRAND.md): cream, dusty blue actions, rounded type. */
+:root {
+  --bg: #FFF7EC;
+  --card: #FFFFFF;
+  --text: #14212E;
+  --muted: #4A5B6B;
+  --accent: #3E6DA6;
+  --on-accent: #FFFFFF;
+  --warning: #A54C0D;
+  --line: #E6DED2;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #11141F;
+    --card: #1B2033;
+    --text: #F2F5F8;
+    --muted: #B4C0CC;
+    --accent: #8FB0D8;
+    --on-accent: #11141F;
+    --warning: #F2A066;
+    --line: #2C3447;
+  }
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.45 ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+main { max-width: 34rem; margin: 0 auto; padding: 48px 16px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 28px 24px; text-align: center; }
+.logo { width: 88px; height: 88px; }
+h1 { font-size: 1.6rem; margin: 12px 0 8px; }
+p { margin: 0 0 12px; }
+.muted { color: var(--muted); }
+.button {
+  display: block; margin: 20px auto 12px; padding: 14px 20px; max-width: 20rem;
+  background: var(--accent); color: var(--on-accent); border-radius: 14px;
+  font-weight: 700; text-decoration: none;
+}
+.button:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+a { color: var(--accent); }
+.steps { text-align: left; margin: 20px 0 0; padding-left: 1.3rem; color: var(--muted); }
+.steps li { margin-bottom: 6px; }
+footer { text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 24px; }
