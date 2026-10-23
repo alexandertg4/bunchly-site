@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <title>Unsubscribe from Bunchly news</title>
+  <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- Linked from every "Bunchly news" email as /news/unsubscribe/?t=<token>. The token is random and only removes
+       the one address it belongs to (leave_news() in the app repo's supabase/migrations). The page waits for a tap,
+       so mail scanners that open links don't unsubscribe anyone. -->
+  <main>
+    <section class="card">
+      <img class="logo" src="/logo.svg" alt="">
+      <h1 id="title">Unsubscribe from Bunchly news</h1>
+      <p id="lead">You'll stop getting news emails from Bunchly. The app keeps working the same.</p>
+      <button id="leave" class="button" type="button" style="border:0;width:100%;font:inherit;font-weight:700;cursor:pointer">Unsubscribe</button>
+      <p id="fallback" class="muted">Trouble? Write to <a href="mailto:hello@bunchly.app?subject=Unsubscribe">hello@bunchly.app</a>
+        and we'll take you off the list.</p>
+    </section>
+  </main>
+  <script type="module">
+    import config from '/organizer/config.js';
+
+    const title = document.getElementById('title');
+    const lead = document.getElementById('lead');
+    const button = document.getElementById('leave');
+    const token = new URLSearchParams(location.search).get('t') || '';
+    const looksRight = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(token);
+
+    if (!looksRight) {
+      title.textContent = 'This link is incomplete';
+      lead.textContent = 'Use the unsubscribe link at the bottom of a Bunchly news email, or write to us below.';
+      button.hidden = true;
+    }
+
+    button.addEventListener('click', async () => {
+      button.disabled = true;
+      button.textContent = 'Unsubscribing…';
+      try {
+        const response = await fetch(`${config.supabaseUrl}/rest/v1/rpc/leave_news`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            apikey: config.supabaseKey,
+            Authorization: `Bearer ${config.supabaseKey}`,
+          },
+          body: JSON.stringify({ token }),
+        });
+        if (!response.ok) throw new Error(String(response.status));
+        const removed = await response.json();
+        title.textContent = 'You’re unsubscribed';
+        lead.textContent = removed
+          ? 'We deleted your email address. You won’t get Bunchly news anymore.'
+          : 'This address was already off the list. You won’t get Bunchly news.';
+        button.hidden = true;
+      } catch {
+        button.disabled = false;
+        button.textContent = 'Try again';
+        lead.textContent = 'That didn’t go through. Check your connection and try again.';
+      }
+    });
+  </script>
+</body>
+</html>

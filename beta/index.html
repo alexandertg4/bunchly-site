@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get the Bunchly beta</title>
+  <meta name="description" content="Try Bunchly free on your iPhone in three taps, with Apple's TestFlight app.">
+  <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="Get the Bunchly beta">
+  <meta property="og:description" content="Try Bunchly free on your iPhone in three taps.">
+  <meta property="og:image" content="https://bunchly.app/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Bunchly grape logo: Your family's day in one place.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .install { list-style: none; margin: 24px 0 0; padding: 0; counter-reset: step; text-align: left; }
+    .install li { counter-increment: step; position: relative; padding: 18px 18px 6px 64px; margin-bottom: 12px;
+      background: var(--card); border: 1px solid var(--line); border-radius: 20px; }
+    .install li::before { content: counter(step); position: absolute; left: 18px; top: 16px; width: 32px; height: 32px;
+      border-radius: 50%; background: var(--accent); color: var(--on-accent); font-weight: 800; text-align: center;
+      line-height: 32px; }
+    .install h2 { font-size: 1.1rem; margin: 2px 0 6px; }
+    .install .button { margin: 12px 0; max-width: none; text-align: center; }
+    .note { border-left: 4px solid var(--warning); padding: 4px 0 4px 14px; margin: 20px 0; text-align: left; }
+    .faq { text-align: left; margin-top: 32px; }
+    .faq h2 { font-size: 1.2rem; }
+    .faq details { border-top: 1px solid var(--line); padding: 12px 0; }
+    .faq summary { font-weight: 700; cursor: pointer; }
+    .faq details p { margin: 10px 0 0; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="center" style="text-align:center">
+      <a href="/"><img class="logo" src="/logo.svg" alt="Bunchly home"></a>
+      <h1>Get the Bunchly beta</h1>
+      <p class="muted">Free while it's in testing. Three taps on your iPhone, with Apple's TestFlight app.</p>
+    </section>
+
+    <p class="note" id="not-iphone" hidden>Open this page on your iPhone: <strong>bunchly.app/beta</strong>. Bunchly is
+      iPhone only for now.</p>
+
+    <ol class="install">
+      <li>
+        <h2>Get TestFlight</h2>
+        <p class="muted">Apple's free app for trying new apps before they're in the App Store.</p>
+        <a class="button" href="https://apps.apple.com/app/testflight/id899247664">Get TestFlight</a>
+      </li>
+      <li>
+        <h2>Get Bunchly</h2>
+        <p class="muted" id="get-help">Tap below. TestFlight opens: tap <strong>Accept</strong>, then
+          <strong>Install</strong>.</p>
+        <a class="button" id="get-bunchly" href="https://testflight.apple.com/join/Qp6BkNzP">Get Bunchly</a>
+      </li>
+      <li>
+        <h2>Open Bunchly</h2>
+        <p class="muted">It's on your home screen like any other app. Got an invite from your family? Tap that link
+          again now and you'll join them.</p>
+      </li>
+    </ol>
+
+    <section class="faq">
+      <h2>Good to know</h2>
+      <details>
+        <summary>Which iPhones work?</summary>
+        <p>Any iPhone with iOS 26. To check, open Settings, then General, then Software Update.</p>
+      </details>
+      <details>
+        <summary>Do I need Developer Mode or a special setting?</summary>
+        <p>No. TestFlight is made by Apple and installs Bunchly the normal way. There's nothing to turn on.</p>
+      </details>
+      <details>
+        <summary>What's different about a beta?</summary>
+        <p>Not much. Updates arrive through TestFlight (it can update automatically), and each version works for
+          90 days, so keep TestFlight on your phone. When Bunchly reaches the App Store, you can switch over and keep
+          everything.</p>
+      </details>
+      <details>
+        <summary>How do I tell you something's wrong?</summary>
+        <p>In Bunchly, go to Settings, then Send feedback. Or take a screenshot and share it to TestFlight, or write
+          to <a href="mailto:hello@bunchly.app">hello@bunchly.app</a>. A real person reads every one.</p>
+      </details>
+      <details>
+        <summary>Is my family's information safe?</summary>
+        <p>The beta is the real Bunchly, with the same privacy. Most things never leave your iPhone, and what your
+          family shares is locked so we can't read it. Read the <a href="/privacy/">privacy policy</a>.</p>
+      </details>
+    </section>
+
+    <footer>
+      <p><a href="/">Bunchly</a> · <a href="/support/">Help</a> · <a href="/privacy/">Privacy</a></p>
+    </footer>
+  </main>
+  <script>
+    // Paste the public link from App Store Connect (TestFlight → Families → Public Link) here.
+    // While it's empty, "Get Bunchly" emails us for an invite instead.
+    const TESTFLIGHT_LINK = 'https://testflight.apple.com/join/Qp6BkNzP';
+
+    if (TESTFLIGHT_LINK) {
+      document.getElementById('get-bunchly').href = TESTFLIGHT_LINK;
+    } else {
+      document.getElementById('get-help').textContent =
+        "We're opening the beta to everyone very soon. Tap below to email us, and we'll send you an invite.";
+      document.getElementById('get-bunchly').textContent = 'Ask for an invite';
+    }
+    const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent)
+      || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    document.getElementById('not-iphone').hidden = isIOS;
+  </script>
+</body>
+</html>
